@@ -9,7 +9,11 @@ rm -rf "$LINK_FOLDER"
 mkdir "$LINK_FOLDER"
 
 for file in $filePaths; do
-    #echo "f:$file"
-    ln -s "$file" "./$LINK_FOLDER"
+    filePath=$(realpath $file)
+    linkPath=$(realpath $LINK_FOLDER)
+    cmd="ln \"$filePath\" \"$linkPath\""
+
+    echo "$cmd"
+    eval "$cmd"
 done
 
