@@ -8,7 +8,11 @@ LINK_FOLDER="links"
 rm -rf "$LINK_FOLDER"
 mkdir "$LINK_FOLDER"
 
+## TODO: realpath is not always defined for mac
+## brew install coreutils
+
 for file in $filePaths; do
+    echo "FILE $file"
     filePath=$(realpath $file)
     linkPath=$(realpath $LINK_FOLDER)
     cmd="ln \"$filePath\" \"$linkPath\""
